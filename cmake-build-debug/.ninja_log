@@ -1,3 +1,16 @@
 # ninja log v6
-5	386	7393540481687468	CMakeFiles/c100.dir/main.cpp.obj	cf6d55578e9ea4d7
-389	559	7393540485515823	c100.exe	fb2f76e35fd3df65
+32	219	7393902125364299	CMakeFiles/c100.dir/driver.cpp.obj	89b3b7be108007b4
+9	747	7393902125121998	CMakeFiles/c100.dir/main.cpp.obj	cf6d55578e9ea4d7
+83	715	7393882093621853	CMakeFiles/c100.dir/AstNode.cpp.obj	f8a81b51429bb418
+2328	3009	7393914275069059	c100.exe	ba1cb173c19a8caf
+5	2317	7393914251825982	CMakeFiles/c100.dir/src/main.cpp.obj	dbd66f80afc1689b
+35	847	7393882093141603	CMakeFiles/c100.dir/Lexer.cpp.obj	f9afddf69534cc1d
+59	1061	7393882093371338	CMakeFiles/c100.dir/Parser.cpp.obj	245a994bb3975840
+88	998	7393896928466973	CMakeFiles/c100.dir/PrintVisitor.cpp.obj	c189cae1c1e846c7
+9	439	7393912281568766	CMakeFiles/c100.dir/CodeGen.cpp.obj	a5cba4d5d87819d6
+8	543	7393914396215207	build.ninja	5a8cb2bca383e122
+178	1534	7393914253575758	CMakeFiles/c100.dir/src/AstNode.cpp.obj	4a57c5e4e35f2bff
+117	1589	7393914252951257	CMakeFiles/c100.dir/src/CodeGen.cpp.obj	2858e2f5d1a0ae1b
+241	1661	7393914254204905	CMakeFiles/c100.dir/src/PrintVisitor.cpp.obj	21ecbb6a93aab45c
+33	1916	7393914252105244	CMakeFiles/c100.dir/src/Lexer.cpp.obj	e8d59771b219a383
+66	2328	7393914252445163	CMakeFiles/c100.dir/src/Parser.cpp.obj	cf67635844b26bff
