@@ -7,7 +7,7 @@
 
 using namespace C100;
 
-const char *code = " 5 + 1 - 3 * 4 / 2";
+const char *code = " 5 + 1a100 + (1 - 3) * 4 / 2";
 
 void testLex()  {
     Lexer lex(code);
@@ -26,6 +26,7 @@ void testParser()   {
 
     auto root = parser.Parse();
     root->Accept(&visitor);
+    std::cout << visitor.Content;
 }
 
 void testCodeGen(int argc, char *argv[])  {
@@ -47,6 +48,8 @@ void testCodeGen(int argc, char *argv[])  {
 }
 
 int main(int argc, char *argv[]) {
-    testParser();
+    testLex();
+    // testParser();
+    // testCodeGen(argc, argv);
     return 0;
 }

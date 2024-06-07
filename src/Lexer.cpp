@@ -6,8 +6,11 @@
 #include <cstring>
 #include <cstdio>
 #include <cctype>
+#include <cassert>
 
-void C100::Lexer::GetNextChar() {
+using namespace C100;
+
+void Lexer::GetNextChar() {
     if (Cursor == SourceCode.size())    {
         CurChar = '\0';
         Cursor++;
@@ -16,7 +19,7 @@ void C100::Lexer::GetNextChar() {
     }
 }
 
-void C100::Lexer::GetNextToken() {
+void Lexer::GetNextToken() {
     /// 1. skip white space
     while (isspace(CurChar))    {
         GetNextChar();
@@ -40,6 +43,15 @@ void C100::Lexer::GetNextToken() {
     } else if (CurChar == '/')  {
         kind = TokenKind::Div;
         GetNextChar();
+    } else if (CurChar == '(')  {
+        kind = TokenKind::LParent;
+        GetNextChar();
+    } else if (CurChar == ')')  {
+        kind = TokenKind::RParent;
+        GetNextChar();
+    } else if (CurChar == ';')  {
+        kind = TokenKind::Semicolon;
+        GetNextChar();
     } else if (isdigit(CurChar))    {
         kind = TokenKind::Num;
         value = 0;
@@ -48,10 +60,30 @@ void C100::Lexer::GetNextToken() {
             GetNextChar();
         } while (isdigit(CurChar));
     } else  {
-        printf("error: not support %c\n", CurChar);
+        if (IsLetter()) {
+            while (IsLetterOrDigit())   {
+                GetNextChar();
+            }
+            kind = TokenKind::Identifier;
+        } else  {
+            printf("error: not support %c\n", CurChar);
+            assert(0);
+        }
     }
     CurrentToken = std::make_shared<Token>();
     CurrentToken->Kind = kind;
     CurrentToken->Value = value;
     CurrentToken->Content = SourceCode.substr(startPos, Cursor - 1 - startPos);
+}
+
+bool Lexer::IsLetter() {
+    return (CurChar >= 'a' && CurChar <= 'z') || (CurChar >= 'A' && CurChar <= 'Z') || (CurChar == '_');
+}
+
+bool Lexer::IsDigit() {
+    return CurChar >= '0' && CurChar <= '9';
+}
+
+bool Lexer::IsLetterOrDigit() {
+    return IsDigit() || IsLetter();
 }

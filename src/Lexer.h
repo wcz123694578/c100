@@ -14,6 +14,10 @@ namespace C100  {
         Mul,
         Div,
         Num,
+        LParent,
+        RParent,
+        Identifier,
+        Semicolon,
         Eof
     };
 
@@ -37,6 +41,11 @@ namespace C100  {
         }
         void GetNextToken();
         void GetNextChar();
+
+    private:
+        bool IsLetter();
+        bool IsDigit();
+        bool IsLetterOrDigit();
     };
 }
 

@@ -6,9 +6,12 @@
 #define C100_PRINTVISITOR_H
 
 #include "AstNode.h"
+#include <iostream>
 
 namespace C100  {
     class PrintVisitor : public AstVisitor  {
+    public:
+        std::string Content;
     public:
         void VisitorProgramNode(ProgramNode *node) override;
 

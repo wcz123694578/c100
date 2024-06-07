@@ -10,7 +10,7 @@ using namespace C100;
 
 void PrintVisitor::VisitorProgramNode(ProgramNode *node) {
     node->Lhs->Accept(this);
-    printf("\n");
+    // Content += "\n";
 }
 
 void PrintVisitor::VisitorBinaryNode(BinaryNode *node) {
@@ -18,16 +18,16 @@ void PrintVisitor::VisitorBinaryNode(BinaryNode *node) {
     node->Lhs->Accept(this);
     switch (node->BinOp) {
     case BinaryOperator::Add:
-        printf(" + ");
+        Content += "+";
         break;
     case BinaryOperator::Sub:
-        printf(" - ");
+        Content += "-";
         break;
     case BinaryOperator::Mul:
-        printf(" * ");
+        Content += "*";
         break;
     case BinaryOperator::Div:
-        printf(" / ");
+        Content += "/";
         break;
     default:
         assert(0);
@@ -36,5 +36,5 @@ void PrintVisitor::VisitorBinaryNode(BinaryNode *node) {
 }
 
 void PrintVisitor::VisitorConstantNode(ConstantNode *node) {
-    printf(" %d ", node->Value);
+    Content += std::to_string(node->Value);
 }

@@ -53,8 +53,15 @@ std::shared_ptr<AstNode> Parser::ParseMultiExpr() {
 }
 
 std::shared_ptr<AstNode> Parser::ParsePrimaryExpr() {
-    auto node = std::make_shared<ConstantNode>();
-    node->Value = Lex.CurrentToken->Value;
-    Lex.GetNextToken();
-    return node;
+    if (Lex.CurrentToken->Kind == TokenKind::LParent)   {
+        Lex.GetNextToken();
+        auto node = ParseExpr();
+        Lex.GetNextToken();
+        return node;
+    } else  {
+        auto node = std::make_shared<ConstantNode>();
+        node->Value = Lex.CurrentToken->Value;
+        Lex.GetNextToken();
+        return node;
+    }
 }
