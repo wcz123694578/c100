@@ -28,11 +28,10 @@ void testParser()   {
     root->Accept(&visitor);
 }
 
-
-int main(int argc, char *argv[]) {
+void testCodeGen(int argc, char *argv[])  {
     if (argc != 2)  {
         printf("please input: .\\c100 code\n");
-        return 0;
+        return;
     }
 
     const char *source = argv[1];
@@ -45,5 +44,9 @@ int main(int argc, char *argv[]) {
 
     auto root = parser.Parse();
     root->Accept(&codeGen);
+}
+
+int main(int argc, char *argv[]) {
+    testParser();
     return 0;
 }
